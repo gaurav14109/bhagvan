@@ -1,0 +1,42 @@
+#links {
+  position: relative;
+  width: 100%;
+  height: 839px;
+  background-color: #D3D3D3; }
+  #links #links_section {
+    width: 100%;
+    position: absolute;
+    top: 80px; }
+    #links #links_section ul {
+      margin-left: 150px;
+      padding: 25px 25px 25px 25px; }
+      #links #links_section ul li {
+        padding: 5px 0px 5px 10px; }
+        #links #links_section ul li a {
+          font-size: 24px;
+          color: white;
+          font-weight: 700; }
+        #links #links_section ul li a:hover {
+          color: yellow; }
+    #links #links_section #link_center {
+      margin-left: 100px;
+      padding: 25px 135px 15px 25px;
+      text-align: center; }
+    #links #links_section .col {
+      margin-left: 130px; }
+    #links #links_section #bg_img_1 {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/thomas-charters-zAi2Is48-MA-unsplash.jpg");
+      background-position: center;
+      background-size: cover; }
+    #links #links_section #bg_img_2 {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/thomas-charters-zAi2Is48-MA-unsplash.jpg");
+      background-position: center;
+      background-size: cover;
+      right: 150px;
+      top: 120px; }
+    #links #links_section #bg_img_3 {
+      background-image: url("../images/pexels-photo-448835.jpg");
+      background-position: center;
+      background-size: cover;
+      right: 300px;
+      top: 240px; }

@@ -1,0 +1,25 @@
+{
+  "name": "bhagwan",
+  "version": "1.0.0",
+  "description": "Information about Indian Gods",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaurav14109/bhagvan.git"
+  },
+  "author": "Gaurav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaurav14109/bhagvan/issues"
+  },
+  "homepage": "https://github.com/gaurav14109/bhagvan#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "node-sass-middleware": "^0.11.0"
+  }
+}
