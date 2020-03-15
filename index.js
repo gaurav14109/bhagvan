@@ -2,7 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const port = 8000;
-
+const db = require('./config/mongoose');
 app.use(express.static('./assets'));
 var sassMiddleware = require('node-sass-middleware')
 app.use(sassMiddleware({
@@ -12,7 +12,7 @@ app.use(sassMiddleware({
     outputStyle: 'extended',
     prefix: '/css'
 }));
-
+app.use(express.urlencoded());//req.body.name in the form.
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-console.log('Router loaded')
+console.log('Router loaded');
 
 router.get('/', (req,res)=>{
 
@@ -21,6 +21,7 @@ router.get('/details', (req,res)=>{
 
 });
 
-
+router.use('/users', require('../routes/doubt'));
+router.use('/comments',require('../routes/comments'));
 
 module.exports = router;
