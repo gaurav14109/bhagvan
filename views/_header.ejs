@@ -2,6 +2,145 @@
     <ul id="link_lists">
         <li><a href="/">Home</a></li>
         <li><a href="/users/questions">Have Any Question?</a></li>
-         
+
+        <div id="user_access">
+          <%if(locals.user){%>
+        <li><a href="/users/sign-out">SignOut</a></li>
+        <%}else{%>
+          <li><a href="#myModal" data-toggle="modal">Login/Register</a></li>
+          <%}%>
+        </div>
     </ul>
 </nav>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div id="header">
+          <h4 class="modal-title">Login</h4>
+          
+        </div>
+      </div>
+      <div class="modal-body">
+         <ul class="nav nav-tabs">
+            <li class="nav-item s1" style="width:50%">
+              <a class="nav-link active" id ="login" data-toggle="tab" href="#home">Login</a>
+            </li>
+            <li class="nav-item s2" style="width:50%">
+              <a class="nav-link" id ="signup" data-toggle="tab" href="#menu1">Sign_Up</a>
+            </li>
+          </ul>
+          
+          <!-- Tab panes -->
+          <div class="tab-content">
+           
+            <div class="tab-pane container active" id="home">
+              <form action="/users/login" method="post">
+               <div class="form-group">
+                <label for="modal_login_email">Email address</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <input type="email" id="modal_login_email email" name="email" class="form-control" placeholder="Enter email" required/>
+                </div>
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+             </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-unlock-alt"></i>
+                    </span>
+                    <input type="password" id="modal_login_password" name="password" class="form-control" placeholder="Password" />
+                </div>
+            </div>
+            
+                  <div class="login_button">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </div>
+          
+            </form>
+           </div>
+            <div class="tab-pane container fade" id="menu1">
+            <form action="/users/signup" method="POST">
+
+                <div class="form-group">
+                  <label for="">Enter Name</label>
+                  <div class="input-group">
+                      <span class="input-group-addon">
+                          <i class="fa fa-unlock-alt"></i>
+                      </span>
+                      <input type="text" name="name" class="form-control" placeholder="Enter Name" required/>
+                  </div>
+                  </div>
+
+              <div class="form-group">
+                <label for="">Email address</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <input type="email"  name="email" class="form-control" placeholder="Enter email" />
+                </div>
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+
+             <div class="form-group">
+                <label for="">Password</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-unlock-alt"></i>
+                    </span>
+                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                </div>
+             </div>
+
+             <div class="form-group">
+              <label for="">Confirm Password</label>
+              <div class="input-group">
+                  <span class="input-group-addon">
+                      <i class="fa fa-unlock-alt"></i>
+                  </span>
+                  <input type="password" name="confirm_password" class="form-control" placeholder="Password" />
+              </div>
+              </div>
+              <div class="signup_button">
+                <button type="submit" class="btn btn-primary">SignUp</button>
+              </div>
+           </form>
+           </div>
+       </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+
+  </div>
+</div>
+
+<script>
+
+
+    $(document).ready(function() {
+
+      var count = 0;
+      
+    $("#login").click(function() {
+
+        $('.modal-title').text('Login');
+ 
+  
+    });
+
+    $("#signup").click(function() {
+      $('.modal-title').text('SignUp');
+    });
+});
+</script>

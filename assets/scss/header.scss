@@ -11,6 +11,63 @@
             padding-top:5px;
             padding-left:30px;
         }
+        #user_access{
+            float:right;
+            display: inline;
+            
+        }
    }
+
+ 
+
+}
+.modal-dialog{
+   .modal-header{
+       background-color: aliceblue;
+       border-bottom: none;;
+   }
+.modal-body{
+    padding:0px 0px 16px 0px;
+}
+
+    .nav-item{
+    text-align: center;
+}
+#header{
+    width:100%;
+    text-align: center;
+}
+.tab-content{
+    padding-top:10px;
+}
+input{
+    border-radius: 20px !important;
+}
+ul
+{
+    border:none;
+    .nav-link{
+        border-top:none;
+        border-bottom:none;
+    }
+    li{
+        background-color: #fff;
+        transition: 0.8s ease-in-out;
+
+    }
+    li:hover{
+        background-color: aliceblue;
+        transform: scale(1) translate(5px, 5px);
+    }
+
+}
+.login_button,.signup_button{
+    text-align: center;
+    button{
+        border-radius: 20px;
+        
+    }
+}
+
 
 }

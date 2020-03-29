@@ -1,39 +1,74 @@
+html,
+body {
+  height: 100%;
+  background-color: #D3D3D3; }
+
 #links {
   position: relative;
   width: 100%;
-  height: 839px;
-  background-color: #D3D3D3; }
+  height: 839px; }
   #links #links_section {
     width: 100%;
     position: absolute;
     top: 100px; }
     #links #links_section ul {
-      margin-left: 150px;
-      padding: 25px 25px 25px 25px; }
+      padding: 15px 50px 25px 50px;
+      text-align: center; }
       #links #links_section ul li {
         padding: 5px 0px 5px 10px; }
         #links #links_section ul li a {
           font-size: 24px;
-          color: white;
+          color: black;
           font-weight: 700; }
         #links #links_section ul li a:hover {
           color: yellow; }
     #links #links_section #link_center {
-      margin-left: 100px;
-      padding: 25px 135px 15px 25px;
-      text-align: center; }
+      padding-left: 30px;
+      padding-bottom: 10px; }
+      #links #links_section #link_center li {
+        font-size: 24px;
+        font-weight: 700; }
     #links #links_section #bg_img_1 {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/thomas-charters-zAi2Is48-MA-unsplash.jpg");
+      border-bottom: 1px solid gray;
+      border-top: 1px solid gray;
       background-position: center;
       background-size: cover;
       left: 100px; }
     #links #links_section #bg_img_2 {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/thomas-charters-zAi2Is48-MA-unsplash.jpg");
-      background-position: center;
-      background-size: cover;
+      color: black;
+      border-bottom: 1px solid gray;
+      border-top: 1px solid gray;
+      overflow: hidden;
       left: 220px; }
     #links #links_section #bg_img_3 {
-      background-image: url("../images/pexels-photo-448835.jpg");
+      color: black;
+      border-bottom: 1px solid gray;
+      border-top: 1px solid gray;
       background-position: center;
       background-size: cover;
       left: 340px; }
+  #links #content-box {
+    padding: 0px 0px 0px 10px; }
+    #links #content-box .mb-4, #links #content-box .input-group {
+      margin-bottom: 15px !important; }
+    #links #content-box .md-textarea {
+      border-top: none;
+      box-shadow: none; }
+    #links #content-box .md-textarea:hover {
+      box-shadow: none; }
+  #links #published_newz {
+    margin-left: 0px !important;
+    overflow: auto;
+    height: 300px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    text-align: start !important; }
+    #links #published_newz li {
+      border-radius: 20px; }
+      #links #published_newz li span {
+        display: block;
+        padding-top: 10px;
+        padding-left: 5px;
+        border-radius: 10px; }
+    #links #published_newz img {
+      border-radius: 10px; }

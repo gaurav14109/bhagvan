@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router();
 
+const News  =require('../model/news');
+const User = require('../model/user');
+const passport = require('passport')
+
 console.log('Router loaded');
 
 router.get('/', (req,res)=>{
@@ -12,16 +16,34 @@ router.get('/', (req,res)=>{
 
 });
 
-router.get('/details', (req,res)=>{
+router.get('/details', async (req,res)=>{
 
-    return res.render('details',{
-        title:'Links To the Page'
 
-    });
+   let news =  await News.find({});
+
+        
+        return res.render('details',{
+            title:'Links To the Page',
+            newz:news
+        
+        });
+ 
 
 });
 
-router.use('/users', require('../routes/doubt'));
+router.get('/admin',passport.checkAuthentication, (req,res)=>{
+    
+    return res.render('admin_NewsPost',{
+        title:'Admin Post Page',
+    })
+    
+ });
+
+router.use('/news', require('../routes/news'));
+
+
+router.use('/users', require('./user&doubt'));
 router.use('/comments',require('../routes/comments'));
+
 
 module.exports = router;

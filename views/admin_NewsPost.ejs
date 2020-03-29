@@ -1,0 +1,24 @@
+<%if(locals.user.name == 'admin'){%>
+                
+    <form method="POST" action="/news" enctype="multipart/form-data">
+        <div id="content-box">
+           
+            <div class="mb-4">
+                <label for="form18">Enter The Content</label>
+                <textarea id="form18" class="md-textarea form-control" name="news" rows="3" required></textarea>
+            </div>
+            <div class="input-group">
+                <div class="custom-file">
+                  <input type="file"   name="avatar" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+           <!-- Fieldname = avatar -->
+            <div>
+                <button class="btn btn-primary submit-newz">Submit</button>
+            </div>
+        </div>
+       
+   </form>
+   <%}%>

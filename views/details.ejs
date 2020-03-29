@@ -4,7 +4,7 @@
 <section id = "links">
 <div id="links_section">
     <div class="row">
-        <div class="col col-3 col-md-3 col-sm-12" id="bg_img_1">
+        <div class="col col-3 col-md-3 col-sm-12 col-xs-12" id="bg_img_1">
             <ul >
                 <li><a href="">History</a></li>
                 <li><a href="">Yug</a></li>
@@ -15,14 +15,35 @@
                 <li><a href="">Dharmik Book</a></li>
             </ul>
         </div>
-        <div class="col col-3  col-md-3 col-sm-12" id="bg_img_2">
+        <div class="col col-3  col-md-3 col-sm-12 col-xs-12" id="bg_img_2">
             
             <ul id="link_center">
-                <li><a href="">Current Affairs <br>& <br>News</a></li>
-                
+                <li>Current Affairs & News</li>
+       
             </ul>
+
+      
+        
+    
+           
+            
+            <ul id="published_newz">
+                <% for (news of newz) { %>
+                   
+                        <li>
+                            <% if (news.avatar){%>
+                            <img src="<%= news.avatar%>" id="newz_image" width="97%" height="200px">
+                            <%}%> 
+                            <span><%=news.news%></span>
+                        </li><br>           
+            <%}%>
+        </ul>
+        
+           
+        
+        
         </div>
-        <div class="col col-3  col-md-3 col-sm-12" id="bg_img_3">
+        <div class="col col-3  col-md-3 col-sm-12 col-xs-12" id="bg_img_3">
            
             <ul >
                 <li><a href="">Arti</a></li>

@@ -9,3 +9,43 @@
       display: inline;
       padding-top: 5px;
       padding-left: 30px; }
+    .header #link_lists #user_access {
+      float: right;
+      display: inline; }
+
+.modal-dialog .modal-header {
+  background-color: aliceblue;
+  border-bottom: none; }
+
+.modal-dialog .modal-body {
+  padding: 0px 0px 16px 0px; }
+
+.modal-dialog .nav-item {
+  text-align: center; }
+
+.modal-dialog #header {
+  width: 100%;
+  text-align: center; }
+
+.modal-dialog .tab-content {
+  padding-top: 10px; }
+
+.modal-dialog input {
+  border-radius: 20px !important; }
+
+.modal-dialog ul {
+  border: none; }
+  .modal-dialog ul .nav-link {
+    border-top: none;
+    border-bottom: none; }
+  .modal-dialog ul li {
+    background-color: #fff;
+    transition: 0.8s ease-in-out; }
+  .modal-dialog ul li:hover {
+    background-color: aliceblue;
+    transform: scale(1) translate(5px, 5px); }
+
+.modal-dialog .login_button, .modal-dialog .signup_button {
+  text-align: center; }
+  .modal-dialog .login_button button, .modal-dialog .signup_button button {
+    border-radius: 20px; }
