@@ -1,31 +1,37 @@
+
+
+<link rel="stylesheet" href="/css/post.css">
+<div class="">
 <h1>Welocome to Doubt Section</h1>
 
-<form method="POST" action="/users/post" style="margin-left:30px;">
-
-    <textarea type="text" name="question" placeholder="Ask a question"></textarea><br><br>
-    <button class="btn btn-success">Post</button>
+<% if (locals.user && (locals.user.email !='admin@gmail.com')){%>
+<form method="POST" action="/users/post" style="margin-left:30px; margin-right: 80px;">
+    
+      <div class="form-group" id = "postQuestion">
+        
+        <textarea type="text" name="question" placeholder="Ask a question" class="form-control" id="postBox" rows="3"></textarea><br>
+        <button class="btn btn-success">Post</button>
+      </div>
+  
 
 </form>
-
+<%}%>
 <% for (post of posts){%>
 
-    <li style="margin-left:30px;"><%=post.content %>
-    
-        <div class="post-comments">
-          
-                <form action="/comments/create" method="POST">
-                    <input type="text" name="content" placeholder="Type Here to add comment..." required>
-                    <input type="hidden" name="post" value="<%= post._id %>" >
-                    <input type="submit" value="Add Comment">
-                </form>
-       
+    <li style="width:60%;margin:auto;" id= "<%=post._id%>">
+        <div id ="postContent">
+        <p>
+        <%=post.content %><br>
+        <span>Asked By:<%=post.user.name%></span>
+        </p>
         </div>
 
-        <div class="post-comments-list">
+        <div id="post-comments-list">
             <ul id="post-comments-<%= post._id %>">
                 <% for (comment of post.comments){%>
                     <li class="<%=comment._id%>">
-                   <%=comment.content%>
+                   <%=comment.content%><br>
+                 <span> From: <%=comment.user.name%></span>
                 </li><br>
                     
                 
@@ -33,6 +39,32 @@
             </ul>
         </div>
     
+        <div class="post-comments">
+          <%if(locals.user && (locals.user.id == post.user.id || locals.user.email =='admin@gmail.com')){%>
+                <form action="/comments/create" method="POST">
+                    
+                  
+                    <!-- send post as input with post id where commnet is to be mad -->
+                    
+                    <div class="form-group" id = "postCommentBox">
+        
+                        <textarea type="text" name="content" placeholder="Type Here to add comment..."  class="form-control" id="postComment" required></textarea><br>
+                        <input type="hidden" name="post" value="<%= post._id %>" >
+                        <button class="btn btn-success">Add Comment</button>
+                      </div>
+                      
+                   
+                </form>
+            <%}%>
+        
+       
+        </div>
+   
+
+     
+    
     </li><br>
 
     <% } %>
+</div>
+    

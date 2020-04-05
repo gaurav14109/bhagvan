@@ -7,7 +7,12 @@ const postSchema = mongoose.Schema({
         type:String,
         require:true
     },
-    //Array of comment
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'User'
+    },
+
+    //Array of comment as post can have multiple comment
     comments:[{
         type: mongoose.Schema.Types.ObjectId,
         ref : 'Comment'

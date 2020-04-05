@@ -20,18 +20,17 @@ router.get('/details', async (req,res)=>{
 
 
    let news =  await News.find({});
-
-        
+      
         return res.render('details',{
             title:'Links To the Page',
-            newz:news
+            newz:news,
+     
         
         });
- 
 
 });
 
-router.get('/admin',passport.checkAuthentication, (req,res)=>{
+router.get('/admin',passport.checkAdminAuthentication, (req,res)=>{
     
     return res.render('admin_NewsPost',{
         title:'Admin Post Page',

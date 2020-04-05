@@ -5,8 +5,11 @@
         </title>
     
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>   
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="/css/layout.css">
@@ -20,7 +23,7 @@
 
     <body>
       
-
+        <%- include('_header') -%>
        
         
         <main id="layout-main">
@@ -29,10 +32,34 @@
         </main>
 
 
-      
+        <%- include('_footer') -%>
 
         <%- script %>
+        <script>
+            <% if (flash.success && flash.success.length > 0) {%>//since locals has a flash so flash.scuucess  and length > 0 flash.success is set at locals i.e
+                // res.locals.success variable
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.success %>",
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
 
+            <% if (flash.error && flash.error.length > 0) {%>
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.error %>",
+                    type: 'error',
+                    layout: 'topLeft',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
+        </script>
+        
 
         
     </body>

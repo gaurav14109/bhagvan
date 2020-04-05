@@ -1,20 +1,20 @@
 html, 
 body {
-    height: 100%;
+    
     background-color: #D3D3D3;
 }
 
 #links{
-    position:relative;   
+    position:relative;  
+    margin-top: 10px; 
     width:100%;
-    height:839px;
+  
  
+    
     #links_section{
         width: 100%;
-        position: absolute;
-        top: 100px;
-
-           
+        padding:200px 100px 200px 100px;
+                
         ul{
             
             padding:15px 50px 25px 50px;
@@ -55,7 +55,7 @@ body {
             border-top: 1px solid gray;
             background-position: center;
             background-size: cover;
-            left:100px;
+            margin-left:1%;        
             
             
         }
@@ -64,8 +64,9 @@ body {
             border-bottom: 1px solid gray;
             border-top: 1px solid gray;
             overflow: hidden;
-            left:220px;
+            margin-left:6%;
           
+                  
         }
         #bg_img_3{
             color: black;
@@ -73,8 +74,7 @@ body {
             border-top: 1px solid gray;
             background-position: center;
             background-size: cover;
-            left:340px;
-            
+            margin-left:6%;
             
         }
 
@@ -126,4 +126,41 @@ body {
 }
 
 // For Responsive View
+@media only screen and (max-width: 977px) {
+     
+    #links{
+        margin-top: 0px; 
+        #links_section{
+            
+          
+           padding: 200px 0px 200px 0px;
+  }
 
+}
+}
+
+@media only screen and (max-width: 767px) {
+     
+    #links{
+        
+        #links_section{
+            
+          
+           padding: 0px 0px 0px 0px !important;
+           #bg_img_1{
+            margin-left:0px;        
+                       
+        }
+        #bg_img_2{
+            margin-left:0px;
+          
+                  
+        }
+        #bg_img_3{
+            margin-left:0px;
+            
+  }
+
+}
+}
+}

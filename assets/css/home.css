@@ -12,3 +12,9 @@
   #next_page_button button {
     width: 10%;
     border-radius: 25px; }
+
+.header {
+  display: none; }
+
+.footer {
+  display: none; }

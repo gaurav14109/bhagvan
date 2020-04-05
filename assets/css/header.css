@@ -11,7 +11,12 @@
       padding-left: 30px; }
     .header #link_lists #user_access {
       float: right;
-      display: inline; }
+      display: inline;
+      color: blue; }
+      .header #link_lists #user_access .fa-user:before {
+        font-size: 20px;
+        padding: 5px;
+        color: blue; }
 
 .modal-dialog .modal-header {
   background-color: aliceblue;
@@ -29,9 +34,12 @@
 
 .modal-dialog .tab-content {
   padding-top: 10px; }
-
-.modal-dialog input {
-  border-radius: 20px !important; }
+  .modal-dialog .tab-content span {
+    padding: 10px;
+    border: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    background-color: aliceblue; }
 
 .modal-dialog ul {
   border: none; }
@@ -49,3 +57,14 @@
   text-align: center; }
   .modal-dialog .login_button button, .modal-dialog .signup_button button {
     border-radius: 20px; }
+
+@media only screen and (max-width: 765px) {
+  .header #link_lists {
+    padding: 15px 5px 5px 5px; }
+    .header #link_lists li {
+      padding-top: 5px;
+      padding-left: 10px; }
+      .header #link_lists li a {
+        font-size: 12px; }
+    .header #link_lists #user_access .fa-user:before {
+      font-size: 12px; } }

@@ -5,8 +5,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../model/user');
 
 passport.use(new LocalStrategy({
-        usernameField: 'email' //The yserfield is email.
-    },function(email, password, done){
+        usernameField: 'email' ,//The yserfield is email.
+        passReqToCallback: true
+    },function(req, email, password, done){
 
               // find a user and establish the identity
               User.findOne({email: email}, function(err, user)  {
@@ -16,8 +17,8 @@ passport.use(new LocalStrategy({
                 }
     
                 if (!user || user.password != password){
-                   
-                    return done(null, false);
+                    req.flash('error', 'Invalid Username/Password');                   
+                    return done(null, false,);
                 }
     
                 return done(null, user);//authrntication and passing user to passport passing user to passport which will be used by seerializer
@@ -49,14 +50,33 @@ passport.deserializeUser(function(id, done){
 passport.checkAuthentication = function(req, res, next){
     // if the user is signed in, then pass on the request to the next function(controller's action) req session id send.
     if (req.isAuthenticated()){ //is autentication is a method that is used to detect whether user is signed in or not
-        return next();//pass to page wheere it called and for which page it isused.
+        return next();//pass to page wheere it called and for which page it isused. passing to constroller if authenticated is success using session id.hwere it is called
     }
 
     // if the user is not signed in
-    return res.redirect('/');
+    req.flash('success', 'Kindly login First')
+    return res.redirect('/details');
+}   
+
+
+passport.checkAdminAuthentication = function(req, res, next){
+    // if the user is signed in, then pass on the request to the next function(controller's action) req session id send.
+    if (req.isAuthenticated()){ //is autentication is a method that is used to detect whether user is signed in or not
+
+        if(req.user.email != 'admin@gmail.com'){
+            req.flash('success', 'Only Admin can Access')
+            return res.redirect('/details');
+        }
+        return next();//pass to page wheere it called and for which page it isused. passing to constroller if authenticated is success using session id.hwere it is called
+    }
+
+    // if the user is not signed in
+    req.flash('success', 'Kindly login First')
+    return res.redirect('/details');
 }
 
-passport.setAuthenticatedUser = function(req, res, next){
+
+passport.setAuthenticatedUser = function(req, res, next){ // this function is called in index.js that browser reads set the locals for view.
     if (req.isAuthenticated()){
         // req.user contains the current signed in user from the session cookie and we are just sending this to the locals for the views 
         //setting user for views calling this function in index.js to set local user. for views

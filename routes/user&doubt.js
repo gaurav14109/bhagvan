@@ -6,14 +6,17 @@ const User = require('../model/user');
 
 
 
+Router.post('/post', passport.checkAuthentication, (req, res)=>{
 
-Router.post('/post', (req, res)=>{
+    //passport.checkAuthentication will check if user is logged in.if yes next to next controoler
 
     Post.create({
-        content:req.body.question
+        content:req.body.question,
+        user:req.user
     },(err, data)=>{
         if(err){console.log(err); return;}
-        console.log(data)
+      
+        req.flash('success', 'Posted Successfully')
         return res.redirect('back');
     });
 
@@ -23,12 +26,13 @@ Router.post('/post', (req, res)=>{
 Router.post('/signup', (req, res)=>{
 
     if(req.body.password != req.body.confirm_password){
+        req.flash('error','Invalid Password')
         return res.redirect('back')
     }
     User.findOne({email:req.body.email},(err,userExist)=>{
         
         if(userExist){
-                console.log('User Already Exists');
+            req.flash('error', 'Same Email is impossible kindly signup again')
                 return res.redirect('back')
         }
         else{
@@ -41,7 +45,8 @@ Router.post('/signup', (req, res)=>{
             if(err){
                 console.log(err);
             }
-            console.log(user);
+            console.log(user)
+            req.flash('success', 'Signed In Successfully Please Signup')
             return res.redirect('back');
 
          });   
@@ -51,29 +56,42 @@ Router.post('/signup', (req, res)=>{
 
 });
 
-//passport.authenticate will call the local stratergy. if failure redirect else controller
+//passport.authenticate will call the local stratergy. if failure redirect else controller will check in the validation that is done.
 Router.post('/login', passport.authenticate(
     'local',
-    {failureRedirect: '/'},
-),  function(req, res) {
-    res.redirect('/');//user is passed in
+    {failureRedirect: '/details'
+    },
+   ),  function(req, res) {
+    req.flash('success', 'logged in successfully');
+    res.redirect('/details');//user is passed in when it is success
   });
 
 
-Router.get('/questions', (req, res)=>{
+Router.get('/questions', passport.checkAuthentication ,(req, res)=>{
 
-      Post.find({}).sort('-createdAt').populate('comments').exec(function (err, posts){ //populate the comments field
-        //find({}) all post no validations populate comment id which inside post
-        res.render('post',{
+      Post.find({}).sort('-createdAt').populate('user').populate({ //populating comments from post to all user in post
+        path: 'comments',//comment
+        populate: {
+            path: 'user',//as comment so inside comment populated user commetn has user init so nested populate
+        }
+    }).exec(function (err, posts){ //populate the comments field
+        if(err){
+            console.log(err)
+        }
+      return   res.render('post',{
             title:'User Doubt',
             posts:posts
          });
      })
 });
 
+
+
+
 Router.get('/sign-out', (req,res)=>{
 
     req.logout();
+    req.flash('success', 'logged out successfully');
      return res.redirect('/');
 });
 
