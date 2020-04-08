@@ -3,7 +3,8 @@ const Router = express.Router();
 const passport = require('passport');
 const Post = require('../model/post');
 const User = require('../model/user');
-
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
 
 
 Router.post('/post', passport.checkAuthentication, (req, res)=>{
@@ -36,20 +37,23 @@ Router.post('/signup', (req, res)=>{
                 return res.redirect('back')
         }
         else{
-        User.create({
-            name:req.body.name,
-            email:req.body.email,
-            password:req.body.password
-         },(err,user)=>{
-
-            if(err){
-                console.log(err);
-            }
-            console.log(user)
-            req.flash('success', 'Signed In Successfully Please Signup')
-            return res.redirect('back');
-
-         });   
+        bcrypt.hash(req.body.password,saltRounds,function(err,hash){
+           User.create({
+                name:req.body.name,
+                email:req.body.email,
+                password:hash
+             },(err,user)=>{
+    
+                if(err){
+                    console.log(err);
+                }
+                console.log(user)
+                req.flash('success', 'Signed In Successfully Please Signup')
+                return res.redirect('back');
+    
+             });  
+        })
+    
         }
 
     });

@@ -1,13 +1,14 @@
 const passport = require('passport')
+const bcrypt = require('bcrypt')
 
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../model/user');
 
 passport.use(new LocalStrategy({
-        usernameField: 'email' ,//The yserfield is email.
-        passReqToCallback: true
-    },function(req, email, password, done){
+        usernameField: 'email' ,//The userfield is email. i.e the input fieldname.
+        passReqToCallback: true //for flash message.
+    }, function(req, email, password, done){
 
               // find a user and establish the identity
               User.findOne({email: email}, function(err, user)  {
@@ -15,14 +16,18 @@ passport.use(new LocalStrategy({
                     
                     return done(err);
                 }
-    
-                if (!user || user.password != password){
+               bcrypt.compare(password, user.password, (err,password)=>{
+
+                if (!user || !password){
                     req.flash('error', 'Invalid Username/Password');                   
                     return done(null, false,);
                 }
     
-                return done(null, user);//authrntication and passing user to passport passing user to passport which will be used by seerializer
+                return done(null, user);//authentication and passing user to passport passing user to passport which will be used by seerializer
             });
+
+        });
+             
 
     }// email i.e the usrename password 
 

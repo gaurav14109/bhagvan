@@ -1,6 +1,6 @@
 
 <link rel="stylesheet" href="/css/post.css">
-<%if(locals.user.name == 'admin'){%>
+<%if(locals.user.email == 'admin@gmail.com'){%>
     <div id ="adminPost">            
     <form method="POST" action="/news" enctype="multipart/form-data">
         <div id="postNews">
