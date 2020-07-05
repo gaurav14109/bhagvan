@@ -48,7 +48,7 @@ Router.post('/signup', (req, res)=>{
                     console.log(err);
                 }
                 console.log(user)
-                req.flash('success', 'Signed In Successfully Please Signup')
+                req.flash('success', 'Signed Up Successfully Please Signup')
                 return res.redirect('back');
     
              });  

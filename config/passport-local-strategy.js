@@ -16,22 +16,29 @@ passport.use(new LocalStrategy({
                     
                     return done(err);
                 }
-               bcrypt.compare(password, user.password, (err,password)=>{
+                if(user){
 
-                if (!user || !password){
-                    req.flash('error', 'Invalid Username/Password');                   
+                    bcrypt.compare(password, user.password, (err,password)=>{
+
+                        if (!password){
+                            req.flash('error', 'Invalid Username/Password');                   
+                            return done(null, false,);
+                        }
+                       
+                        return done(null, user);//authentication and passing user to passport passing user to passport which will be used by seerializer
+                    });
+        
+
+                }
+
+                else{
+                    req.flash('error', 'Email does not   exist'); 
                     return done(null, false,);
                 }
-    
-                return done(null, user);//authentication and passing user to passport passing user to passport which will be used by seerializer
-            });
-
+         
         });
-             
-
     }// email i.e the usrename password 
-
-
+    
 ));
 
 passport.serializeUser(function(user, done){
@@ -40,7 +47,7 @@ passport.serializeUser(function(user, done){
 
 // deserializing the user from the key in the cookies browser send the request user_id we deserialize it.
 passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){ //using that id we find user again.
+    User.findById(id, function(err, user){ //using that id we find user again.when request comes from browser from logged in user.
         if(err){
             console.log('Error in finding user --> Passport');
             return done(err);
